@@ -2,4 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('admin', 'AdminController@welcome');
+Route::get('/', function () {
+    return view('Admin::index');
+});
