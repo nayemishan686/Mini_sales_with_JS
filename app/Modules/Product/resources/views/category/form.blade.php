@@ -1,0 +1,29 @@
+<div class="row">
+    <div class="col-md-4">
+        <div class="form-group">
+            {!! Form::label('parent_id', 'Brand Name', ['class' => 'col-form-label']) !!}<span class="text-danger">*</span>
+            {!! Form::select('parent_id', $brands, isset($brands->id)?$brands->id:null, ['class' => 'form-control']) !!}
+            <span class="text-danger">{!! $errors->first('parent_id') !!}</span>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="form-group">
+            {!! Form::label('name', 'Name', ['class' => 'col-form-label']) !!}<span class="text-danger">*</span>
+            {!! Form::text('name',null,['class' => 'form-control', 'placeholder' => 'Enter Category Name']) !!}
+            <span class="text-danger">{!! $errors->first('name') !!}</span>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="form-group">
+            {!! Form::label('status', 'Status', ['class' => 'col-form-label']) !!}<span class="text-danger"> *</span>
+
+            {!! Form::select('status', ['active' => 'Active', 'inactive' => 'Inactive'], $brand->status?? 'active', ['class' => 'form-control'])!!}
+            <span class="text-danger"> {!! $errors->first('status') !!}</span>
+        </div>
+    </div>
+</div>
+<div class="form-group">
+    {!!Form::submit('Save',['class' => 'btn btn-success float-right'])!!}
+</div>

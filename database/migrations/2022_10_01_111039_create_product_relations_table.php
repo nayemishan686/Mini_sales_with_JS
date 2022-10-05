@@ -17,11 +17,12 @@ return new class extends Migration
             $table->id();
             $table->string('name')->nullable();
             $table->string('slug')->nullable();
-            $table->string('parent_id')->nullable();
+            $table->unsignedBigInteger('parent_id')->nullable();
             $table->string('type')->nullable();
-            $table->boolean('status')->default(1);
+            $table->string('status')->default(1);
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();
+            $table->foreign('parent_id')->references('id')->on('product_relations')->onDelete('cascade');
         });
     }
 

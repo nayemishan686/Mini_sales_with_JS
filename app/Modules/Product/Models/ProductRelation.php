@@ -9,7 +9,7 @@ class ProductRelation extends Model
 {
     use HasFactory;
 
-    protected $table='product_relations';
+    protected $table = 'product_relations';
 
     protected $fillable = [
         'id',
@@ -19,4 +19,14 @@ class ProductRelation extends Model
         'type',
         'status',
     ];
+
+    public function sub()
+    {
+        return $this->hasMany(ProductRelation::class, 'parent_id');
+    }
+
+    public function parent()
+    {
+        return $this->belongsTo(ProductRelation::class, 'parent_id');
+    }
 }

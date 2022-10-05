@@ -6,3 +6,4 @@ Route::get('product', 'ProductController@welcome');
 
 include('brand.php');
 include('category.php');
+include('product.php');

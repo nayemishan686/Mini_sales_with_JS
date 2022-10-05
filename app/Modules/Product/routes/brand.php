@@ -13,5 +13,4 @@ Route::group(['prefix' => 'brand'], function () {
     Route::get('/destroy/{id}', 'BrandController@destroy')->name('brand.delete');
     Route::get('/edit/{id}', 'BrandController@edit')->name('brand.edit');
     Route::post('/update/{id}', 'BrandController@update')->name('brand.update');
-    // Route::get('/edit/{id}', 'CategoryController@edit');
 });

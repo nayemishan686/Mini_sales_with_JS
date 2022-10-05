@@ -17,4 +17,9 @@ class ProductController extends Controller
     {
         return view("Product::welcome");
     }
+
+    // To create new product 
+    public function create(){
+        return view("Product::product.form");
+    }
 }

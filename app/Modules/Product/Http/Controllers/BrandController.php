@@ -13,7 +13,7 @@ class BrandController extends Controller
 {
     // To show all brand
     public function index(){
-        $brand = ProductRelation::where('type','brand')->select('product_relations.*')->paginate(3);
+        $brand = ProductRelation::where('type','brand')->select('product_relations.*')->paginate(10);
         return view('Product::brand.index',compact('brand'));
     }
 
@@ -52,5 +52,22 @@ class BrandController extends Controller
     public function edit($id){
         $brand = ProductRelation::find($id);
         return view('Product::brand.edit',compact('brand'));
+    }
+
+    // To store new brand
+    public function update(Request $request, $id){
+        $type = 'brand';
+        $validated = $request->validate([
+            'name' => 'required',
+            'status' => 'required'
+        ]);
+        ProductRelation::where('id',$id)->update([
+        'name' => $request->name,
+        'slug' => Str::slug($request->name,'-'),
+        'type' => $type,
+        'status' => $request->status,
+        ]);
+        $notification = ['message' => 'Brand Added Successfully', 'alert-type' => 'success'];
+        return redirect()->route('brand.index')->with($notification);
     }
 }
