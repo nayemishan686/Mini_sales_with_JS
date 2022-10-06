@@ -10,6 +10,6 @@ Route::group(['prefix' => 'product'], function () {
     Route::post('/store', 'ProductController@store')->name('product.store');
     Route::get('/destroy/{id}', 'ProductController@destroy')->name('product.delete');
     Route::get('/edit/{id}', 'ProductController@edit')->name('product.edit');
-    // Route::patch('/update/{id}', 'CategoryController@update')->name('category.update');
+    Route::patch('/update/{id}', 'ProductController@update')->name('product.update');
     Route::get('/get-category/{id}', 'ProductController@getCategory');
 });

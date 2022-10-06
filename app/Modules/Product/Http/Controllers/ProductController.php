@@ -97,6 +97,62 @@ class ProductController extends Controller
         // print_r($image);
     }
 
+    // To edit Product Page
+    public function edit($id){
+        $product = DB::table('products')->where('id',$id)->first();
+        $brands = ['' => 'Please Select Brand'] + ProductRelation::where('type', 'brand')
+            ->where('status', 'active')
+            ->pluck('name', 'id')
+            ->all();
+        $categories = ProductRelation::where('type', 'category')
+            ->where('status', 'active')
+            ->pluck('name', 'id')
+            ->all();
+        return view('Product::product.edit',compact('product','brands','categories'));
+    }
+
+    // To update Product
+    public function update(Request $request, $id){
+        $validated = $request->validate([
+            'name' => 'required',
+            'brand_id' => 'required',
+            'category_id' => 'required',
+            'status' => 'required',
+            'selling_price' => 'required',
+            'discount_price' => 'required',
+            'description' => 'required'
+        ]);
+        $slug = Str::slug($request->name, '-');
+        $data = [];
+        $data['name'] = $request->name;
+        $data['slug'] = $slug;
+        $data['brand_id'] = $request->brand_id;
+        $data['category_id'] = $request->category_id;
+        $data['status'] = $request->status;
+        $data['selling_price'] = $request->selling_price;
+        $data['discount_price'] = $request->discount_price;
+        $data['description'] = $request->description;
+        if($request->image){
+            if(File::exists($request->old_image)){
+                unlink($request->old_image);
+            }
+            $image = $request->image;
+            $imageName = $slug . '.' . $image->getClientOriginalExtension();
+            Image::make($image)->resize(600, 600)->save('files/products/' . $imageName);
+            $data['image'] = 'files/products/' .$imageName;
+            DB::table('products')->update($data);
+            $notification = ['message' => 'Product Added Successfully', 'alert-type' => 'success'];
+            return redirect()->back()->with($notification);
+        }else{
+            $data['image'] = $request->old_image;
+            DB::table('products')->update($data);
+            $notification = ['message' => 'Product Added Successfully', 'alert-type' => 'success'];
+            return redirect()->back()->with($notification);
+        }
+        // echo "<pre>";
+        // print_r($request->all());
+    }
+
     // to find category
     public function getCategory($id)
     {
