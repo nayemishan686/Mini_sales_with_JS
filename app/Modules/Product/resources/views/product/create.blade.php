@@ -7,7 +7,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Category Table</h1>
+                        <h1 class="m-0">Product Table</h1>
                     </div>
                     <!-- /.col -->
                     <div class="col-sm-6">
@@ -15,7 +15,7 @@
                             <!-- Button trigger modal -->
                             <a href="{{ route('brand.index') }}">
                                 <button type="button" class="btn btn-primary">
-                                    All Category
+                                    All Product
                                 </button>
                             </a>
                         </ol>
@@ -32,12 +32,12 @@
                             <!-- /.card -->
                             <div class="card">
                                 <div class="card-header">
-                                    <h3 class="card-title">Add New Category</h3>
+                                    <h3 class="card-title">Add New Product</h3>
                                 </div>
                                 <!-- /.card-header -->
                                 <div class="card-body">
                                     {!! Form::open(['method' => 'POST','route' => 'category.store', 'id' => 'brand']) !!}
-                                        @include('Product::category.form')
+                                        @include('Product::product.form')
                                     {!! Form::close() !!}
                                 </div>
                                 <!-- /.card-body -->
