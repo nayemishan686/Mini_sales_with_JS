@@ -3,6 +3,7 @@
         <div class="form-group">
             {!! Form::label('name','Product Name', ['class' => 'col-form-label']) !!}<span class="text-danger">*</span>
             {!! Form::text('name',null,['class' => 'form-control', 'placeholder' => 'Enter Product Name']) !!}
+            <span class="text-danger">{!! $errors->first('name') !!}</span>
         </div>
     </div>
 
@@ -10,6 +11,7 @@
         <div class="form-group">
             {!! Form::label('brand_id','Brand Name',['class' => 'col-form-label']) !!}<span class="text-danger">*</span>
             {!! Form::select('brand_id',$brands, null, ['class' => 'form-control']) !!}
+            <span class="text-danger">{!! $errors->first('brand_id') !!}</span>
         </div>
     </div>
 
@@ -17,6 +19,7 @@
         <div class="form-group">
             {!! Form::label('category_id','Category Name',['class' => 'col-form-label']) !!}<span class="text-danger">*</span>
             {!! Form::select('category_id',$categories, null, ['class' => 'form-control']) !!}
+            <span class="text-danger">{!! $errors->first('category_id') !!}</span>
         </div>
     </div>
 
@@ -31,14 +34,16 @@
     <div class="col-md-6">
         <div class="form-group">
             {!! Form::label('selling_price','Selling Price', ['class' => 'col-form-label']) !!}<span class="text-danger">*</span>
-            {!! Form::text('selling_price',null,['class' => 'form-control', 'placeholder' => 'Enter Selling price']) !!}
+            {!! Form::number('selling_price',null,['class' => 'form-control', 'placeholder' => 'Enter Selling price']) !!}
+            <span class="text-danger">{!! $errors->first('selling_price') !!}</span>
         </div>
     </div>
 
     <div class="col-md-6">
         <div class="form-group">
             {!! Form::label('discount_price','Discount Price', ['class' => 'col-form-label']) !!}<span class="text-danger">*</span>
-            {!! Form::text('discount_price',null,['class' => 'form-control', 'placeholder' => 'Enter Discount price']) !!}
+            {!! Form::number('discount_price',null,['class' => 'form-control', 'placeholder' => 'Enter Discount price']) !!}
+            <span class="text-danger">{!! $errors->first('discount_price') !!}</span>
         </div>
     </div>
 
@@ -46,13 +51,15 @@
         <div class="form-group">
             {!! Form::label('description','Product Description', ['class' => 'col-form-label']) !!}<span class="text-danger">*</span>
             {!! Form::textarea('description',null,['class' => 'form-control', 'id' => 'summernote', 'placeholder' => 'Enter Discount price']) !!}
+            <span class="text-danger">{!! $errors->first('description') !!}</span>
         </div>
     </div>
 
     <div class="col-md-12">
         <div class="form-group">
-            {!! Form::label('file','Product Image', ['class' => 'col-form-label']) !!}<span class="text-danger">*</span>
-            {!! Form::file('file',['class' => 'form-control']) !!}
+            {!! Form::label('image','Product Image', ['class' => 'col-form-label']) !!}<span class="text-danger">*</span>
+            {!! Form::file('image',['class' => 'form-control']) !!}
+            <span class="text-danger">{!! $errors->first('image') !!}</span>
         </div>
     </div>
 

@@ -1,3 +1,6 @@
+{{-- @php
+    phpinfo();
+@endphp --}}
 @extends('Admin::layouts.admin')
 
 @section('admin_content')
@@ -36,7 +39,7 @@
                                 </div>
                                 <!-- /.card-header -->
                                 <div class="card-body">
-                                    {!! Form::open(['method' => 'POST','route' => 'category.store', 'id' => 'brand']) !!}
+                                    {!! Form::open(['method' => 'POST', 'files'=> true, 'route' => 'product.store', 'id' => 'brand']) !!}
                                         @include('Product::product.form')
                                     {!! Form::close() !!}
                                 </div>

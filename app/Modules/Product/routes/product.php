@@ -5,11 +5,11 @@ use Illuminate\Support\Facades\Route;
 Route::group(['prefix' => 'product'], function () {
 
     // Category index page
-    // Route::get('/', 'CategoryController@index')->name('category.index');
+    Route::get('/', 'ProductController@index')->name('product.index');
     Route::get('/create', 'ProductController@create')->name('product.create');
-    // Route::post('/store', 'CategoryController@store')->name('category.store');
-    // Route::get('/destroy/{id}', 'CategoryController@destroy')->name('category.delete');
-    // Route::get('/edit/{id}', 'CategoryController@edit')->name('category.edit');
+    Route::post('/store', 'ProductController@store')->name('product.store');
+    Route::get('/destroy/{id}', 'ProductController@destroy')->name('product.delete');
+    Route::get('/edit/{id}', 'ProductController@edit')->name('product.edit');
     // Route::patch('/update/{id}', 'CategoryController@update')->name('category.update');
     Route::get('/get-category/{id}', 'ProductController@getCategory');
 });
