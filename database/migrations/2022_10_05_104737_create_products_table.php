@@ -23,6 +23,7 @@ return new class extends Migration
             $table->double('selling_price')->nullable();
             $table->double('discount_price')->nullable();
             $table->string('status')->nullable();
+            $table->string('quantity')->nullable();
             $table->string('image')->nullable();
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();

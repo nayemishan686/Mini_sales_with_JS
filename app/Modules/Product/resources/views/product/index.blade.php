@@ -44,6 +44,7 @@
                                                 <th>Product Name</th>
                                                 <th>Brand</th>
                                                 <th>Category</th>
+                                                <th>Quantity</th>
                                                 <th>Status</th>
                                                 <th>Action</th>
                                             </tr>
@@ -51,15 +52,26 @@
                                         <tbody>
                                             @foreach ($product as $key => $item)
                                                 <tr>
-                                                    <td>{{ ($product->currentpage()-1) * $product->perpage() + $key + 1 }}</td>
-                                                    <td><img src="{{asset($item->image)}}" height="40" width="40" alt="{{$item->slug}}"></td>
+                                                    <td>{{ ($product->currentpage() - 1) * $product->perpage() + $key + 1 }}
+                                                    </td>
+                                                    <td><img src="{{ asset($item->image) }}" height="40" width="40"
+                                                            alt="{{ $item->slug }}"></td>
                                                     <td>{{ $item->name }}</td>
                                                     <td>{{ $item->brand_name }}</td>
                                                     <td>{{ $item->category_name }}</td>
+                                                    <td>
+                                                        @if ($item->quantity > 0)
+                                                            <span class="badge badge-success">{{ $item->quantity }}</span>
+                                                        @else
+                                                            <span class="badge badge-danger">{{ $item->quantity }}</span>
+                                                        @endif
+                                                    </td>
                                                     <td>{{ $item->status }}</td>
                                                     <td>
-                                                        <a href="{{route('product.edit',$item->id)}}" class="btn btn-primary edit">Edit</a>
-                                                        <a href="{{route('product.delete',$item->id)}}" class="btn btn-danger" id="delete">Delete</a>
+                                                        <a href="{{ route('product.edit', $item->id) }}"
+                                                            class="btn btn-primary edit">Edit</a>
+                                                        <a href="{{ route('product.delete', $item->id) }}"
+                                                            class="btn btn-danger" id="delete">Delete</a>
                                                     </td>
                                                 </tr>
                                             @endforeach

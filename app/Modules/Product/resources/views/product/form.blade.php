@@ -31,7 +31,7 @@
         </div>
     </div>
 
-    <div class="col-md-6">
+    <div class="col-md-4">
         <div class="form-group">
             {!! Form::label('selling_price','Selling Price', ['class' => 'col-form-label']) !!}<span class="text-danger">*</span>
             {!! Form::number('selling_price',null,['class' => 'form-control', 'placeholder' => 'Enter Selling price']) !!}
@@ -39,11 +39,19 @@
         </div>
     </div>
 
-    <div class="col-md-6">
+    <div class="col-md-4">
         <div class="form-group">
             {!! Form::label('discount_price','Discount Price', ['class' => 'col-form-label']) !!}<span class="text-danger">*</span>
             {!! Form::number('discount_price',null,['class' => 'form-control', 'placeholder' => 'Enter Discount price']) !!}
             <span class="text-danger">{!! $errors->first('discount_price') !!}</span>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="form-group">
+            {!! Form::label('quantity','Quantity', ['class' => 'col-form-label']) !!}<span class="text-danger">*</span>
+            {!! Form::number('quantity',null,['class' => 'form-control', 'placeholder' => 'Enter Product Quantity']) !!}
+            <span class="text-danger">{!! $errors->first('quantity') !!}</span>
         </div>
     </div>
 

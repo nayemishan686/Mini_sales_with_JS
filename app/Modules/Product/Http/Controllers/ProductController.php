@@ -58,6 +58,7 @@ class ProductController extends Controller
             'status' => 'required',
             'selling_price' => 'required',
             'discount_price' => 'required',
+            'quantity' => 'required',
             'description' => 'required',
             'image' => 'required',
         ]);
@@ -70,6 +71,7 @@ class ProductController extends Controller
         $data['status'] = $request->status;
         $data['selling_price'] = $request->selling_price;
         $data['discount_price'] = $request->discount_price;
+        $data['quantity'] = $request->quantity;
         $data['description'] = $request->description;
 
         $image = $request->image;
@@ -120,7 +122,8 @@ class ProductController extends Controller
             'status' => 'required',
             'selling_price' => 'required',
             'discount_price' => 'required',
-            'description' => 'required'
+            'quantity' => 'required',
+            'description' => 'required',
         ]);
         $slug = Str::slug($request->name, '-');
         $data = [];
@@ -131,6 +134,7 @@ class ProductController extends Controller
         $data['status'] = $request->status;
         $data['selling_price'] = $request->selling_price;
         $data['discount_price'] = $request->discount_price;
+        $data['quantity'] = $request->quantity;
         $data['description'] = $request->description;
         if($request->image){
             if(File::exists($request->old_image)){
