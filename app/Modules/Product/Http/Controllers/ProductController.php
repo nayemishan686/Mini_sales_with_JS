@@ -144,14 +144,14 @@ class ProductController extends Controller
             $imageName = $slug . '.' . $image->getClientOriginalExtension();
             Image::make($image)->resize(600, 600)->save('files/products/' . $imageName);
             $data['image'] = 'files/products/' .$imageName;
-            DB::table('products')->update($data);
-            $notification = ['message' => 'Product Added Successfully', 'alert-type' => 'success'];
-            return redirect()->back()->with($notification);
+            DB::table('products')->where('id',$id)->update($data);
+            $notification = ['message' => 'Product Updated Successfully', 'alert-type' => 'success'];
+            return redirect()->route('product.index')->with($notification);
         }else{
             $data['image'] = $request->old_image;
-            DB::table('products')->update($data);
-            $notification = ['message' => 'Product Added Successfully', 'alert-type' => 'success'];
-            return redirect()->back()->with($notification);
+            DB::table('products')->where('id',$id)->update($data);
+            $notification = ['message' => 'Product Updated Successfully', 'alert-type' => 'success'];
+            return redirect()->route('product.index')->with($notification);
         }
         // echo "<pre>";
         // print_r($request->all());

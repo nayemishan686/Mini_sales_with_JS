@@ -26,7 +26,7 @@
     <div class="col-md-6">
         <div class="form-group">
             {!! Form::label('status', 'Status', ['class' => 'col-form-label']) !!}<span class="text-danger"> *</span>
-            {!! Form::select('status', ['active' => 'Active', 'inactive' => 'Inactive'], $brand->status?? 'active', ['class' => 'form-control'])!!}
+            {!! Form::select('status', ['active' => 'Active', 'inactive' => 'Inactive'], $product->status?? 'active', ['class' => 'form-control'])!!}
             <span class="text-danger"> {!! $errors->first('status') !!}</span>
         </div>
     </div>
