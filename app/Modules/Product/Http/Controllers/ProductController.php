@@ -161,7 +161,6 @@ class ProductController extends Controller
     public function getCategory($id)
     {
         $data = DB::table('product_relations')->where('parent_id', $id)->get();
-        // $data = "hi";
         return response()->json($data);
     }
 }
